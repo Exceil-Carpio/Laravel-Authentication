@@ -21,7 +21,7 @@ class authController extends Controller
         }
 
         return back()->withErrors([
-            'password' => 'The provided credentials do not match our records.',
+            'password' => 'Invalid Email or Password',
         ])->onlyInput('email');
     }
 

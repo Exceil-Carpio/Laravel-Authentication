@@ -34,8 +34,7 @@ class userController extends Controller
     function update(User $user){
         $data = request()->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|password|min:8|alphanumeric'
+            'email' => 'required|email'
         ]);
 
         $user->update($data);
@@ -43,7 +42,8 @@ class userController extends Controller
     }
 
     function delete(User $user){
-        $user->delete();
-        return view('welcome');
+        if($user->delete()){
+            return view('welcome');
+        }
     }
 }
