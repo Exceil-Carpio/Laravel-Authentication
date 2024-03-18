@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class userController extends Controller
 {
     function index(){
+        if(Auth::check()){
+            return view('LoggedIn', ['user' => Auth::user()]);
+        }
         return view('welcome');
     }
 
